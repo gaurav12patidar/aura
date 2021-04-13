@@ -1,0 +1,51 @@
+<app-header></app-header>
+   
+  
+      
+      <!--navbar-->
+           <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #ee6e73;">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse"  id="navbarNav">
+            <ul class=" navbar-nav ">
+              <li class="nav-item">
+                <a  class="nav-link "  href="#">Furniture</a>
+              </li>
+              <li class="nav-item">
+                <a  class="nav-link" href="#">Living</a>
+              </li>
+              <li class="nav-item">
+                <a  class="nav-link" href="#">Bedroom</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Kids Room</a>
+              </li>
+              <li class="nav-item">
+                <a  class="nav-link" href="#">Mattresses</a>
+              </li>
+              <li class="nav-item">
+                <a  class="nav-link" routerLink="/kitchen">Kitchen</a>
+              </li>
+            </ul></div>
+            <a routerLink="/cart"> <i class="bi bi-cart3 d-flex justify-content-center card-text" id="cartbutton"><span class="d-flex justify-content-top" style="font-size: 12px;top:-10px;opacity:0.9;" >{{count}}</span></i></a>
+          
+          </nav>   
+          
+
+          <!--Main Body-->
+          <h1 class="d-flex justify-content-center" style="margin-top: 5%;letter-spacing: 2px;font-family: 'Times New Roman', Times, serif;">KITCHEN</h1>
+          <div class="row container-fluid align-items-center" >
+            <div *ngFor="let x of data" class="col col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center" style="padding-top: 2%;">
+              <div class="card  " style="width: 18rem; ">
+                <a [routerLink]="['/product',x.payload.doc.data().pid]">
+                  <img style="height:200px;width:100%;"class="card-img-top" src={{x.payload.doc.data().image}}  alt="Card image cap"></a>
+                  <div class="card-body" style="width: 100%;">
+                    <p class="d-flex justify-content-center card-text" style="font-size: small;font-weight: 800;font-family:Verdana, Geneva, Tahoma, sans-serif;letter-spacing: 0.5px;">{{x.payload.doc.data().title | titlecase}}</p>
+                    <p class="card-text" style="font-size: smaller;">{{x.payload.doc.data().desc.substr(0,40)}}...</p>
+                    <p class="card-text  " style="font-size: smaller;"><span  style="color: crimson;font-size: large;">&#8377;{{x.payload.doc.data().price}}  </span> <del>  {{x.payload.doc.data().cutprice}}</del>
+                    <span style="padding-left: 10%;"><button type="button" class="pl-3 btn btn-primary " (click)="addToCart(x.payload.doc.data())" (click)="calculateTotal(x.payload.doc.data().price)" >Add To Cart</button></span></p>
+                
+                  </div>
+                </div>
+              </div></div>

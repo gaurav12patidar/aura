@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "hero-firebase"
+    }
+  },
+  "defaultProject": "hero-firebase",
+  "cli": {
+    "analytics": false
+  }
 }
